@@ -14,7 +14,8 @@ class ProfileController extends BaseController {
 
 
 	public function edit_profile(){
-		return 'its working';
+		
+		return View::make('profile.edit');
 	}
 
 

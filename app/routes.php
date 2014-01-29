@@ -11,10 +11,29 @@
 |
 */
 
+
+
+
+Route::get('/welcome',function(){
+	return View::make('welcome');
+
+})->before('guest');
+
+
+
 Route::get('/', function()
 {
+	// at first user will see the welcome page , if they are not logged in . 
+	if (Auth::check() == False ) return Redirect::to('/welcome');
+
 	return View::make('hello');
-});// Confide routes
+});
+
+
+
+
+// Confide User routes
+
 Route::get( 'user/create',                 'UserController@create');
 Route::post('user',                        'UserController@store');
 Route::get( 'user/login',                  'UserController@login');
@@ -25,3 +44,16 @@ Route::post('user/forgot_password',        'UserController@do_forgot_password');
 Route::get( 'user/reset_password/{token}', 'UserController@reset_password');
 Route::post('user/reset_password',         'UserController@do_reset_password');
 Route::get( 'user/logout',                 'UserController@logout');
+
+
+// Profile management 
+
+Route::get('/profile',['as'=>'profile','before'=>'auth','uses'=>'ProfileController@index']);
+Route::get('/profile/edit',['as'=>'edit_profile','before'=>'auth','uses'=>'ProfileController@edit_profile']);
+
+
+
+
+
+
+

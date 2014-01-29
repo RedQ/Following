@@ -42,8 +42,15 @@ class UserController extends BaseController {
 
         if ( $user->id )
         {
+            $profile = Profile::create([
+                'user_id' => $user->id
+            ]);   
+
+
+
             // Redirect with success message, You may replace "Lang::get(..." for your custom message.
-                        return Redirect::action('UserController@login')
+            if($profile)
+            return Redirect::action('UserController@login')
                             ->with( 'notice', Lang::get('confide::confide.alerts.account_created') );
         }
         else

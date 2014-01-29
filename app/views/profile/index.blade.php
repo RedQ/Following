@@ -1,0 +1,1 @@
+<a href="{{URL::route('edit_profile')}}">Edit profile</a>

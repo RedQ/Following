@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 class ProfileController extends BaseController {
 
 	/**
@@ -14,8 +17,9 @@ class ProfileController extends BaseController {
 
 
 	public function edit_profile(){
-		
-		return View::make('profile.edit');
+
+        new Following\Repositories\UserDataRepository;
+	  //	return View::make('profile.edit');
 	}
 
 
